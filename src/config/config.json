@@ -1,0 +1,7 @@
+{
+  "tpLink_username": "gonzalovazquez010@gmail.com",
+  "tpLink_password": "REPLACE-WITH-PASSWORD",
+  "lifx_token": "REPLACE-WITH-PASSWORD",
+  "lifx_url": "https://api.lifx.com/v1/lights/all/toggle",
+  "weather_token": "REPLACE-WITH-PASSWORD"
+}
