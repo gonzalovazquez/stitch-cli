@@ -12,6 +12,7 @@
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.3",
     "axios": "^0.21.3",
+    "huejay": "^1.9.0",
     "node-fetch": "^2.6.1",
     "tplink-cloud-api": "^0.8.1",
     "tslib": "^1.14.1",

@@ -2,6 +2,7 @@ import {Command, flags} from '@oclif/command'
 import Lifx from './modules/lifx'
 import Weather from './modules/weather'
 import TPLink from './modules/kasa'
+import Hue from './modules/hue'
 
 class Stitch extends Command {
   static description = 'describe the command here'
@@ -17,13 +18,13 @@ class Stitch extends Command {
       char: 'b',
       description: 'toggles Lifx beam',
     }),
-    light: flags.boolean({
-      char: 'l',
-      description: 'toggle Key light',
-    }),
     key: flags.boolean({
       char: 'k',
       description: 'toggle TPLink Key Light',
+    }),
+    desk: flags.boolean({
+      char: 'd',
+      description: 'toggle Hue Monitor Lights',
     }),
   }
 
@@ -33,6 +34,12 @@ class Stitch extends Command {
       required: false,
       description: 'the city',
       default: 'toronto',
+    },
+    {
+      name: 'state',
+      required: false,
+      description: 'the state of the lights',
+      default: true,
     },
   ]
 
@@ -49,6 +56,13 @@ class Stitch extends Command {
 
     if (flags.key) {
       TPLink.toggle()
+    }
+
+    if (flags.desk) {
+      // eslint-disable-next-line no-unneeded-ternary
+      const lightState = args.state === 'true' ? true : false
+      Hue.changeStateLight(14, lightState)
+      Hue.changeStateLight(15, lightState)
     }
   }
 }

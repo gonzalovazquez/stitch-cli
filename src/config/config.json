@@ -1,7 +1,9 @@
 {
   "tpLink_username": "gonzalovazquez010@gmail.com",
-  "tpLink_password": "REPLACE-WITH-PASSWORD",
-  "lifx_token": "REPLACE-WITH-PASSWORD",
+  "tpLink_password": "insert-value-here",
+  "lifx_token": "insert-value-here",
   "lifx_url": "https://api.lifx.com/v1/lights/all/toggle",
-  "weather_token": "REPLACE-WITH-PASSWORD"
+  "weather_token": "insert-value-here",
+  "hue_ip": "192.168.0.149",
+  "hue_username": ""
 }
