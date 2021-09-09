@@ -1,6 +1,7 @@
 import {Command, flags} from '@oclif/command'
 import * as fs from 'fs-extra'
 import * as path from 'path'
+import cli from 'cli-ux'
 import Lifx from './modules/lifx'
 import Weather from './modules/weather'
 import TPLink from './modules/kasa'
@@ -48,6 +49,8 @@ class Stitch extends Command {
   async run() {
     const userConfig = await fs.readJSON(path.join(this.config.configDir, 'config.json'))
     this.log('Loading user config....')
+    // start the spinner
+    cli.action.start('Starting a process')
 
     const {args, flags} = this.parse(Stitch)
 
@@ -70,6 +73,7 @@ class Stitch extends Command {
       Hue.changeStateLight(14, lightState)
       Hue.changeStateLight(15, lightState)
     }
+    cli.action.stop()
   }
 }
 
