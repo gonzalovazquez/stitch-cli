@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Module: TPlink Kasa
  * Description:
