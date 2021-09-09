@@ -15,11 +15,11 @@ A light CLI helper, small but powerful.
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g stitch
+$ npm install -g @gv/stitch-cli
 $ stitch COMMAND
 running command...
 $ stitch (-v|--version|version)
-stitch/0.0.1 linux-x64 node-v14.17.0
+@gv/stitch-cli/1.0.0 linux-x64 node-v14.17.0
 $ stitch --help [COMMAND]
 USAGE
   $ stitch COMMAND
