@@ -1,4 +1,6 @@
 import {Command, flags} from '@oclif/command'
+import * as fs from 'fs-extra'
+import * as path from 'path'
 import Lifx from './modules/lifx'
 import Weather from './modules/weather'
 import TPLink from './modules/kasa'
@@ -44,23 +46,27 @@ class Stitch extends Command {
   ]
 
   async run() {
+    const userConfig = await fs.readJSON(path.join(this.config.configDir, 'config.json'))
+    this.log('Loading user config....')
+
     const {args, flags} = this.parse(Stitch)
 
     if (flags.beam) {
-      Lifx.getLifxToggle()
+      Lifx.getLifxToggle(userConfig.lifx_url, userConfig.lifx_token)
     }
 
     if (flags.weather) {
-      Weather.getWeather(args.city)
+      Weather.getWeather(args.city, userConfig.weather_token)
     }
 
     if (flags.key) {
-      TPLink.toggle()
+      TPLink.toggle(userConfig.tpLink_username, userConfig.tpLink_password)
     }
 
     if (flags.desk) {
       // eslint-disable-next-line no-unneeded-ternary
       const lightState = args.state === 'true' ? true : false
+      Hue.createClient(userConfig.hue_username, userConfig.hue_ip)
       Hue.changeStateLight(14, lightState)
       Hue.changeStateLight(15, lightState)
     }

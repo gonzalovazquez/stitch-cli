@@ -7,12 +7,11 @@
  */
 
 const {login} = require('./tplink/tplink')
-const config = require('../config/config')
 
 const TPLink = function () { }
 
-TPLink.toggle = async function () {
-  const tplink = await login(config.tpLink_username, config.tpLink_password)
+TPLink.toggle = async function (tplinkUsername, tplinkPassword) {
+  const tplink = await login(tplinkUsername, tplinkPassword)
   await tplink.getDeviceList()
   const myPlug = tplink.getHS100('Key Light')
   await myPlug.toggle()

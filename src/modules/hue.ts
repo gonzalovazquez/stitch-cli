@@ -7,7 +7,7 @@
  */
 
 const huejay = require('huejay')
-const config = require('../config/config')
+let client
 
 const Hue = function () { }
 
@@ -24,14 +24,16 @@ const Hue = function () { }
  */
 
 // Create client
-const client = new huejay.Client({
-  username: config.hue_username,
-  host: config.hue_ip,
-  port: 80,
-})
+Hue.createClient = function (username: string, ip: string) {
+  client = new huejay.Client({
+    username: username,
+    host: ip,
+    port: 80,
+  })
+}
 
 Hue.changeStateLight = function (id: number, state: boolean) {
-  return client.lights.getById(id)
+  client.lights.getById(id)
   .then(light => {
     light.on = state
     return client.lights.save(light)

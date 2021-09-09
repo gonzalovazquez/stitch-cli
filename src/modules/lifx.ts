@@ -6,7 +6,6 @@
  * Ref: https://api.developer.lifx.com/
  */
 const fetch = require('node-fetch')
-const config = require('../config/config')
 
 const Lifx = function () { }
 
@@ -25,10 +24,10 @@ Lifx.apiLifx = function<T> (url: string, token: string): Promise<T> {
   })
 }
 
-Lifx.getLifxToggle = function () {
+Lifx.getLifxToggle = function (lifxUrl: string, lifxToken: string) {
   return Lifx.apiLifx<{
     results: string;
-  }>(config.lifx_url, config.lifx_token).then(({results}) => {
+  }>(lifxUrl, lifxToken).then(({results}) => {
     console.log(`The beam is ${results[0]['power']}`)
     return results
   })
