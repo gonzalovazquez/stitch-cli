@@ -6,7 +6,7 @@
  * Ref: https://developers.meethue.com/develop/get-started-2/
  */
 
-const huejay = require('huejay')
+const huejay = require('@gonzalovazquez/huejay')
 let client
 
 const Hue = function () { }

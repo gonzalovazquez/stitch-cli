@@ -1,4 +1,3 @@
-import { string } from '@oclif/command/lib/flags'
 import {expect, test} from '@oclif/test'
 
 import cmd = require('../src')

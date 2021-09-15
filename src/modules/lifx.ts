@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Module: Lifx
  * Description:
@@ -7,6 +8,7 @@
  */
 const fetch = require('node-fetch')
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 const Lifx = function () { }
 
 Lifx.apiLifx = function<T> (url: string, token: string): Promise<T> {
